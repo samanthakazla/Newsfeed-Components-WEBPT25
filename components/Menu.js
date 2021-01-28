@@ -8,7 +8,27 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+function menuMaker(items) {
+  const menuDiv = document.createElement("div")
+  menuDiv.classList.add("menu")
 
+  const ul = document.createElement("ul")
+  menuDiv.appendChild(ul)
+
+  items.forEach(element => {
+    const li = document.createElement("li")
+    li.textContent = element
+    ul.appendChild(li)
+  });
+
+  const menuButton = document.querySelector(".menu-button")
+  menuButton.addEventListener("click", ()=>{menuDiv.classList.toggle("menu--open") })
+
+return menuDiv
+}
+
+const header = document.querySelector(".header")
+header.appendChild(menuMaker(menuItems))
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
@@ -17,6 +37,8 @@ let menuItems = [
       {each menu item as an <li>}
     </ul>
   </div>
+
+  
 
   The 'menuMaker' takes an array of menu items as its only argument.
 
